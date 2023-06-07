@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class RotaStatusSubscriber {
     @Autowired
     LogRepository logRepository;
-    @KafkaListener(topics = "rota-status-topic", groupId = "log-group")
+    @KafkaListener(topics = "${topic.name.consumer}", groupId = "group_id")
     public void receiveStatusUpdate(Log log) {
         try {
             logRepository.save(log);
